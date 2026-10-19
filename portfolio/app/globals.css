@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---------------------------------------------------------------
+     Ideaforge design tokens
+     Warm off-white editorial base, near-black ink, electric violet
+     primary accent, lime secondary accent (used sparingly).
+  --------------------------------------------------------------- */
+
+  /* Surfaces */
+  --color-paper: #f7f4ec;
+  --color-paper-2: #efebe0;
+  --color-indigo: #171334;
+  --color-indigo-2: #1f1a46;
+  --color-night: #0e0b1c;
+
+  /* Ink */
+  --color-ink: #16131d;
+  --color-ink-soft: #57525f;
+  --color-ink-faint: #8b8694;
+  --color-paper-soft: #b9b4cc;
+
+  /* Accents */
+  --color-violet: #5b32ff;
+  --color-violet-deep: #4720db;
+  --color-violet-light: #8e74ff;
+  --color-lime: #c8f751;
+  --color-alert: #c43b3b;
+
+  /* Lines */
+  --color-line: #16131d24;
+  --color-line-strong: #16131d40;
+  --color-line-dark: #ffffff1f;
+
+  /* Type */
+  --font-display: var(--font-space-grotesk), "Segoe UI", sans-serif;
+  --font-sans: var(--font-inter), "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01" on, "cv05" on;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-violet);
+  color: #fff;
+}
+
+/* Editorial helpers ------------------------------------------------ */
+
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 6.6vw, 5.25rem);
+  line-height: 1.01;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.6vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.7vw, 2.35rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.body-lg {
+  font-size: clamp(1.0625rem, 1.2vw, 1.1875rem);
+  line-height: 1.65;
+}
+
+/* Subtle grid used behind hero + final CTA */
+.grid-overlay {
+  background-image: linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.grid-overlay-dark {
+  background-image: linear-gradient(to right, var(--color-line-dark) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line-dark) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Reduced motion ---------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Product mockups ----------------------------------------------------
+   Every mockup scales from a container-driven root size and uses em
+   units internally, so a mockup looks identical at any rendered width.
+--------------------------------------------------------------------- */
+.mk {
+  container-type: inline-size;
+}
+
+.mk-root {
+  font-family: var(--font-sans);
+  font-size: clamp(7.5px, 1.5cqw, 15px);
+  line-height: 1.45;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.mk-window {
+  background: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: 1em;
+  overflow: hidden;
+  box-shadow:
+    0 0.1em 0.25em rgba(22, 19, 29, 0.06),
+    0 2.5em 5em -2.5em rgba(22, 19, 29, 0.45);
+}
+
+.mk-card {
+  background: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: 0.6em;
+}
+
+.mk-card-soft {
+  background: color-mix(in srgb, var(--color-paper) 60%, #ffffff);
+  border: 1px solid var(--color-line);
+  border-radius: 0.6em;
+}
